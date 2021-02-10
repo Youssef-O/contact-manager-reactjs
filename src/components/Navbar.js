@@ -11,7 +11,7 @@ export class Navbar extends Component {
                     <div className="col-md-2 col-3 ms-auto">
                         <button type="button" className="btn btn-primary ">
                             <i className="fas fa-user-plus"></i>
-                            <label>Add contact</label>
+                            Add contact
                         </button>
                     </div>
                 </div>
