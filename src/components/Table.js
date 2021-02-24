@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export class Table extends Component {
     render() {
         return (
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <table class="table">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <table className="table">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>

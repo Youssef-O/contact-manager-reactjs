@@ -9,7 +9,7 @@ export class Navbar extends Component {
                         <input className="form-control" type="text" placeholder="Search"/>
                     </div>
                     <div className="col-md-2 col-3 ms-auto">
-                        <button type="button" className="btn btn-primary ">
+                        <button type="button" className="btn btn-primary " onClick={this.props.addContact}>
                             <i className="fas fa-user-plus"></i>
                             Add contact
                         </button>
@@ -18,6 +18,11 @@ export class Navbar extends Component {
             </div>
         )
     }
+
+    // addContactHandler = () => {
+    //     console.log('Was clicked!');
+    //     <alert>Hello world</alert>
+    // }
 }
 
 export default Navbar

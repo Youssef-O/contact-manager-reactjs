@@ -1,11 +1,37 @@
-#nav-bar{
+#nav-bar {
     background-color: #3700B4;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #6200EE;
 }
 
+/* Modal */
+.modal-header {
+    margin: 0px auto 12px;
+}
+
+.modal-body {
+    /* padding: 0 50px; */
+}
+
+input.form-control {
+    margin-bottom: 18px;
+}
+
+#gender-radio {
+    text-align: center;
+}
+
+.form-check.form-check-inline {
+    margin: 0 34px;
+}
+
+.modal-footer {
+    margin: auto;
+}
+
+/* Table */
 table.table {
     margin-top: 75px;
 }

@@ -1,0 +1,26 @@
+[
+    {
+		"id": "1",
+		"firstName": "Murphy",
+		"lastname": "Carter",
+		"gender": "Male",
+		"phoneNumber": "04 51 77 10 55",
+		"email": "dapibus@sapien.org"
+	},
+    {
+        "id": "2",
+		"firstName": "George",
+		"lastname": "Guzman",
+		"gender": "Male",
+		"phoneNumber": "03 40 91 81 83",
+		"email": "dui.in@cubilia.org"
+    },
+    {
+        "id": "3",
+		"firstName": "Valentine",
+		"lastname": "Snow",
+		"gender": "female",
+		"phoneNumber": "02 04 74 16 24",
+		"email": "neque@purus.org"
+    }
+]
