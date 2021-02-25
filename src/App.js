@@ -2,15 +2,40 @@ import './App.css';
 import AddContactModal from './components/AddContactModal';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function App() {
-  const [modalShow, setModalShow] = React.useState(false);
+
+  const [contacts, setContacts] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
   
   const addContactHandler = () => {
-    console.log('Was clicked!');
-    setModalShow(true)
+    setModalShow(true);
   }
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8887/contacts.json')
+      .then(response => {
+        setContacts(response.data);
+        console.log(contacts);      
+      })
+  });
+
+  const contactsData = contacts.map(contact => {
+    return  <tr>
+              <th scope="row">{contact.id}</th>
+              <td>{contact.firstName}</td>
+              <td>{contact.lastname}</td>
+              <td>{contact.gender}</td>
+              <td>{contact.phoneNumber}</td>
+              <td>{contact.email}</td>
+              <td>
+                  <a href=""><i className="fa fa-pen"/></a>
+                  <a href=""><i className="fas fa-trash"/></a>
+              </td>
+            </tr>
+  });
 
   return (
     <div className="App">
@@ -20,44 +45,7 @@ function App() {
         onHide={() => setModalShow(false)}
       />
       <Table>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>Male</td>
-          <td>0652238256</td>
-          <td>example@email.com</td>
-          <td>
-              <a href=""><i className="fa fa-pen"/></a>
-              <a href=""><i className="fas fa-trash"/></a>
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">2</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>Male</td>
-          <td>0652238256</td>
-          <td>example@email.com</td>
-          <td>
-              <a href=""><i className="fa fa-pen"/></a>
-              <a href=""><i className="fas fa-trash"/></a>
-          </td>
-        </tr>        
-        
-        <tr>
-          <th scope="row">3</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>Male</td>
-          <td>0652238256</td>
-          <td>example@email.com</td>
-          <td>
-              <a href=""><i className="fa fa-pen"/></a>
-              <a href=""><i className="fas fa-trash"/></a>
-          </td>
-        </tr>
+        {contactsData}
       </Table>
     </div>
   );
