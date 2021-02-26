@@ -18,7 +18,7 @@ function App() {
     axios.get('http://127.0.0.1:8887/contacts.json')
       .then(response => {
         setContacts(response.data);
-        console.log(contacts);      
+        // console.log(contacts);      
       })
   });
 

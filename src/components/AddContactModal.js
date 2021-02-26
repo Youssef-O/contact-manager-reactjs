@@ -1,7 +1,34 @@
 import React, { Component } from 'react'
 import {Button, Modal, Form, Row, Col} from 'react-bootstrap';
+import axios from 'axios';
 
 export class AddContactModal extends Component {
+
+    state = {
+        id: '',
+        firstName: '',
+        lastName: '',
+        gender: '',
+        phoneNumber: '',
+        email: ''
+    }
+
+    contactDataHandler = () => {
+        const contact = {
+            id: this.state.id,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
+            phoneNumber: this.state.phoneNumber,
+            email: this.state.email,
+        };
+        // console.log(contact);
+        axios.post('http://127.0.0.1:8887/contact')
+            .then(response => {
+                console.log(response);
+            });
+    }
+
     render() {
         return (
             <div>
@@ -21,22 +48,22 @@ export class AddContactModal extends Component {
                         <Form>
                             <Form.Row>
                                 <Col>
-                                    <Form.Control placeholder="First name" />
+                                    <Form.Control placeholder="First name" onChange={(event) => this.setState({firstName: event.target.value})}/>
                                 </Col>
                                 <Col>
-                                    <Form.Control placeholder="Last name" />
+                                    <Form.Control placeholder="Last name" onChange={(event) => this.setState({lastName: event.target.value})}/>
                                 </Col>
                             </Form.Row>
-                            <Form.Control placeholder="Email" />
-                            <Form.Control placeholder="Phone number" />
+                            <Form.Control placeholder="Email" onChange={(event) => this.setState({email: event.target.value})}/>
+                            <Form.Control placeholder="Phone number" onChange={(event) => this.setState({phoneNumber: event.target.value})}/>
                             <div id="gender-radio">
-                                <Form.Check inline label="Male" type="radio" id="male-radio" name="gender"/>
-                                <Form.Check inline label="Female" type="radio" id="female-radio" name="gender"/>
+                                <Form.Check inline label="Male" type="radio" value="male" onChange={(event) => this.setState({gender: event.target.value})}/>
+                                <Form.Check inline label="Female" type="radio" value="female" onChange={(event) => this.setState({gender: event.target.value})}/>
                             </div>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button>Save</Button>
+                        <Button onClick={this.contactDataHandler}>Save</Button>
                         <Button onClick={this.props.onHide}>Close</Button>
                     </Modal.Footer>
                 </Modal>
