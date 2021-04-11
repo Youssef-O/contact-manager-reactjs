@@ -14,6 +14,14 @@ function App() {
     setModalShow(true);
   }
 
+  const editContactHandler = () => {
+    setModalShow(true);
+  }
+
+  const deleteContactHandler = () => {
+
+  }
+
   useEffect(() => {
     axios.get('http://127.0.0.1:8887/contacts.json')
       .then(response => {
@@ -31,8 +39,8 @@ function App() {
               <td>{contact.phoneNumber}</td>
               <td>{contact.email}</td>
               <td>
-                  <a href=""><i className="fa fa-pen"/></a>
-                  <a href=""><i className="fas fa-trash"/></a>
+                  <a href="#"><i className="fa fa-pen" onClick={editContactHandler}/></a>
+                  <a href="#"><i className="fas fa-trash" onClick={deleteContactHandler}/></a>
               </td>
             </tr>
   });
