@@ -8,22 +8,31 @@ import axios from 'axios';
 function App() {
 
   const [contacts, setContacts] = useState([]);
+  const [contactState, setContactState] = useState();
   const [modalShow, setModalShow] = useState(false);
+  const [contactModalState, setContactModalState] = useState(0);
   
   const addContactHandler = () => {
+    setContactModalState(0);
     setModalShow(true);
   }
 
-  const editContactHandler = () => {
+  const editContactHandler = (contact) => {
+    setContactState(contact);
+    setContactModalState(1);
+    // console.log(contactState);
     setModalShow(true);
   }
 
-  const deleteContactHandler = () => {
-
+  const deleteContactHandler = (id) => {
+    axios.delete('http://localhost:8000/api/contact/' + id)
+    .then(response => {
+      console.log(response);
+    })
   }
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8887/contacts.json')
+    axios.get('http://localhost:8000/api/contacts')
       .then(response => {
         setContacts(response.data);
         // console.log(contacts);      
@@ -31,16 +40,17 @@ function App() {
   });
 
   const contactsData = contacts.map(contact => {
+    // console.log("render() method");
     return  <tr>
               <th scope="row">{contact.id}</th>
               <td>{contact.firstName}</td>
-              <td>{contact.lastname}</td>
-              <td>{contact.gender}</td>
+              <td>{contact.lastName}</td>
+              <td>{contact.gender == 'm' ? 'Male' : 'Female'}</td>
               <td>{contact.phoneNumber}</td>
               <td>{contact.email}</td>
               <td>
-                  <a href="#"><i className="fa fa-pen" onClick={editContactHandler}/></a>
-                  <a href="#"><i className="fas fa-trash" onClick={deleteContactHandler}/></a>
+                  <a href="#"><i className="fa fa-pen" onClick={() => editContactHandler(contact)}/></a>
+                  <a href="#"><i className="fas fa-trash" onClick={() => deleteContactHandler(contact.id)}/></a>
               </td>
             </tr>
   });
@@ -51,6 +61,8 @@ function App() {
       <AddContactModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        contact= {contactState}
+        contactModalState = {contactModalState}
       />
       <Table>
         {contactsData}
