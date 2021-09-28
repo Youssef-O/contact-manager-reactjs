@@ -26,7 +26,7 @@ const AddContactModal = (props) => {
     const contactDataHandler = () => {
         // console.log(firstName, lastName, gender);
         if(props.contactModalState == 0) {
-            axios.post('http://immense-peak-05874.herokuapp.com/api/contact', {
+            axios.post('https://immense-peak-05874.herokuapp.com/api/contact', {
             firstName: firstName,
             lastName: lastName,
             gender: gender == 'male' ? 'm' : 'f',
@@ -38,7 +38,7 @@ const AddContactModal = (props) => {
             props.onHide();
         });
         } else {
-            axios.put('http://immense-peak-05874.herokuapp.com/api/contact/' + {id}, {
+            axios.put('https://immense-peak-05874.herokuapp.com/api/contact/' + {id}, {
             firstName: firstName,
             lastName: lastName,
             gender: gender == 'male' ? 'm' : 'f',
