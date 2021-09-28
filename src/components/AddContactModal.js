@@ -15,18 +15,18 @@ const AddContactModal = (props) => {
     useEffect(() => {
         // console.log(props.contact);
 
-        setId(props.contact.id);
-        setFirstName(props.contact.firstName);
-        setLastName(props.contact.lastName);
-        setGender(props.contact.gender);
-        setPhoneNumber(props.contact.phoneNumber);
-        setEmail(props.contact.email);
+        // setId(props.contact.id);
+        // setFirstName(props.contact.firstName);
+        // setLastName(props.contact.lastName);
+        // setGender(props.contact.gender);
+        // setPhoneNumber(props.contact.phoneNumber);
+        // setEmail(props.contact.email);
     });
 
     const contactDataHandler = () => {
         // console.log(firstName, lastName, gender);
         if(props.contactModalState == 0) {
-            axios.post('http://localhost:8000/api/contact', {
+            axios.post('http://immense-peak-05874.herokuapp.com/api/contact', {
             firstName: firstName,
             lastName: lastName,
             gender: gender == 'male' ? 'm' : 'f',
@@ -38,7 +38,7 @@ const AddContactModal = (props) => {
             props.onHide();
         });
         } else {
-            axios.put('http://localhost:8000/api/contact/' + {id}, {
+            axios.put('http://immense-peak-05874.herokuapp.com/api/contact/' + {id}, {
             firstName: firstName,
             lastName: lastName,
             gender: gender == 'male' ? 'm' : 'f',

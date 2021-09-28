@@ -25,14 +25,14 @@ function App() {
   }
 
   const deleteContactHandler = (id) => {
-    axios.delete('http://localhost:8000/api/contact/' + id)
+    axios.delete('http://immense-peak-05874.herokuapp.com/api/contact/' + id)
     .then(response => {
       console.log(response);
     })
   }
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/contacts')
+    axios.get('http://immense-peak-05874.herokuapp.com/api/contacts')
       .then(response => {
         setContacts(response.data);
         // console.log(contacts);      
