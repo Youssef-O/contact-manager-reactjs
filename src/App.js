@@ -7,19 +7,29 @@ import axios from 'axios';
 
 function App() {
 
+  const contact = {
+    id: null,
+    firstName: "",            
+    lastName: "",
+    gender: "",
+    phoneNumber: "",
+    email: ""
+  };
+
   const [contacts, setContacts] = useState([]);
-  const [contactState, setContactState] = useState();
+  const [contactState, setContactState] = useState(contact);
   const [modalShow, setModalShow] = useState(false);
   const [contactModalState, setContactModalState] = useState(0);
   
   const addContactHandler = () => {
     setContactModalState(0);
+    setContactState(contact);
     setModalShow(true);
   }
 
   const editContactHandler = (contact) => {
-    setContactState(contact);
     setContactModalState(1);
+    setContactState(contact);
     // console.log(contactState);
     setModalShow(true);
   }
@@ -61,8 +71,8 @@ function App() {
       <AddContactModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        contact= {contactState}
         contactModalState = {contactModalState}
+        contact= {contactState}
       />
       <Table>
         {contactsData}

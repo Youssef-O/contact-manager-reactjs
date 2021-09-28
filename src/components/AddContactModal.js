@@ -15,12 +15,22 @@ const AddContactModal = (props) => {
     useEffect(() => {
         // console.log(props.contact);
 
-        // setId(props.contact.id);
-        // setFirstName(props.contact.firstName);
-        // setLastName(props.contact.lastName);
-        // setGender(props.contact.gender);
-        // setPhoneNumber(props.contact.phoneNumber);
-        // setEmail(props.contact.email);
+        // if(props.contactModalState == 0) {
+        //     setId(null);
+        //     setFirstName("");
+        //     setLastName("");
+        //     setGender("");
+        //     setPhoneNumber("");
+        //     setEmail("");
+        // } 
+        // else if(props.contactModalState == 1) {
+        //     setId(props.contact.id);
+        //     setFirstName(props.contact.firstName);
+        //     setLastName(props.contact.lastName);
+        //     setGender(props.contact.gender);
+        //     setPhoneNumber(props.contact.phoneNumber);
+        //     setEmail(props.contact.email);
+        // } 
     });
 
     const contactDataHandler = () => {
@@ -85,14 +95,14 @@ const AddContactModal = (props) => {
                     <Form>
                         <Form.Row>
                             <Col>
-                                <Form.Control placeholder="First name" value={firstName} onChange={(event) => setFirstName(event.target.value)}/>
+                                <Form.Control placeholder="First name" defaultValue={props.contact.firstName} onChange={(event) => setFirstName(event.target.value)}/>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Last name" value={lastName} onChange={(event) => setLastName(event.target.value)}/>
+                                <Form.Control placeholder="Last name" defaultValue={props.contact.lastName} onChange={(event) => setLastName(event.target.value)}/>
                             </Col>
                         </Form.Row>
-                        <Form.Control placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
-                        <Form.Control placeholder="Phone number" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)}/>
+                        <Form.Control placeholder="Email" defaultValue={props.contact.email} onChange={(event) => setEmail(event.target.value)}/>
+                        <Form.Control placeholder="Phone number" defaultValue={props.contact.phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)}/>
                         <div id="gender-radio">
                             <Form.Check inline label="Male" type="radio" value="male" onChange={(event) => setGender(event.target.value)}/>
                             <Form.Check inline label="Female" type="radio" value="female" onChange={(event) => setGender(event.target.value)}/>
